@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hospital Repo</title>
+    </head>
+    <body>
+        <p>User ID: <strong> <%- u_id %> </strong></p>
+        <p>Username: <strong> <%- uname %> </strong></p>
+
+        <h1>Your Hospital Repo</h1>
+        <a href="/dashboard">Home</a>
+        <a href="/addpatient">Add Patient</a>
+        <a href="/viewpatient">View Patient</a>
+        <a href="/logout">Logout</a>
+
+            <% if(typeof errors != 'undefined') { %>  
+                <% errors.forEach(function(error){ %>
+                    <h5 style="color: red"> <%= error.msg %> </h5>
+                <% }) %>
+            <% } %>
+
+            <% if(message != '') { %>
+                <p style="color: green"> <%= message %> </p>
+            <% } %>
+                
+            <% if(error_msg != ''){ %>
+                <p style="color: red"> <%= error_msg %> </p>
+            <% } %>
+
+            
+            <p>please add patient details below</p>
+            <h4>Patients page</h4>
+            <form action="/addpatient" method="post">
+                    <p>firstname: <input type="text" name="firstname"value="<%= typeof firstname != 'undefined' ? firstname : '' %>"></p>
+                    <p>lastname: <input type="text" name="lastname"value="<%= typeof firstname != 'undefined' ? lastname : '' %>"></p>
+                    <p>sex: Male <input type="radio" name="sex" value="Male"
+                        <% if(typeof sex != 'undefined' && sex == 'Male'){ %> checked="checked" <%}%>>
+                                Female <input type="radio" name="sex" value="Female"
+                        <% if(typeof sex != 'undefined' && sex == 'Female'){ %> checked="checked" <%}%>>
+                    </p>
+                    <p>Phone number: <input type="text" name="phone"
+                        value="<%= typeof phone != 'undefined' ? phone : '' %>">
+                    </p>
+                    <p>maritalStatus:  Single <input type="radio" name="status" value="Single" 
+                        <% if(typeof status != 'undefined' && status === 'Single'){ %> checked="checked" <%}%>
+                        />
+                                       Married <input type="radio" name="status" value="Married"
+                        <% if(typeof status != 'undefined' && status === 'Married'){ %> checked="checked" <%}%>
+                        />
+                                       Divorced <input type="radio" name="status" value="Divorced"
+                        <% if(typeof status != 'undefined' && status === 'Divorced'){ %> checked="checked" <%}%>
+                        />
+                                       Widowed <input type="radio" name="status" value="Widowed"
+                        <% if(typeof status != 'undefined' && status === 'Widowed'){ %> checked="checked" <%}%>
+                        />                 
+                    </p>
+            
+                <% let blood = ["A+", "B-", "O+", "B", "B+"] %>
+
+                <p>BloodGroup: <select name="bloodGroup">
+                                    <option value=" ">Blood Group</option>
+                                <% blood.forEach(function(group) { %>
+                <option value="<%-group%>" <% if(typeof bloodGroup != 'undefined' ){%> selected="selected" <%}%>> <%-group%></option>
+                                    <%})%>
+                </select></p>
+
+                <% let geno = ["AA", "AS", "AC", "SS"] %>
+
+                <p>Genotype: <select name="genotype">
+                                    <option value=" ">Genotype</option>
+                                <% geno.forEach(function(gen) { %>
+                <option value="<%-gen%>" <% if(typeof genotype != 'undefined' ){%> selected="selected" <%}%>> <%-gen%></option>
+                                    <%})%>
+                </select>
+                </p>
+                <input type="submit" value="click to submit">
+            </form>
+           
+    </body>
+</html>

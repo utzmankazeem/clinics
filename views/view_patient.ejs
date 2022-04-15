@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hospitaal Repo</title>
+    </head>
+    <body>
+
+        <p>User ID: <strong> <%- u_id %> </strong></p>
+        <p>Username: <strong> <%- uname %> </strong></p>
+
+
+        <h1>Your Hospital Repo</h1>
+        <a href="/dashboard">Home</a>
+        <a href="/addpatient">Add Patient</a>
+        <a href="/viewpatient">View Patient</a>
+        <a href="/logout">Logout</a>
+
+        <h4>Patients page</h4>
+
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Mobile</th>
+                <th>Status</th>
+                <th>BloodGroup</th>
+                <th>Genotype</th>
+                <th>Add Diagnosis</th>
+                <th>View Diagnosis</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr>
+                <% patients.forEach(function(patient) { %>
+                <td> <%-patient.firstname +" - "+ patient.lastname%> </td>
+                <td> <%-patient.sex%> </td>
+                <td> <%-patient.phone%> </td>
+                <td> <%-patient.status%> </td>
+                <td> <%-patient.bloodGroup%> </td>
+                <td> <%-patient.genotype%> </td>
+                <td> <a href="/addDiagnosis/<%-patient._id%>">Add Diagnosis</a></td>
+                <td> <a href="/viewDiagnosis/<%-patient._id%>">View Diagnosis</a></td>
+                <td> <a href="/edit/<%-patient._id%>">Edit</a>  </td>
+                <td> <a href="/delete/<%-patient._id%>">Delete</a> </td>
+            </tr>
+            <% }) %> 
+        </table>
+
+    </body>
+</html>

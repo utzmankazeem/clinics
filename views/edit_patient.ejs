@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hospitaal Repo</title>
+    </head>
+    <body>
+        <p>User ID: <strong> <%- u_id %> </strong></p>
+        <p>Username: <strong> <%- uname %> </strong></p>
+
+        <h1>Your Hospital Repo</h1>
+        <a href="/dashboard">Home</a>
+        <a href="/addpatient">Add Patient</a>
+        <a href="/viewpatient">View Patient</a>
+        <a href="/logout">Logout</a>
+
+        <h4>Edit Patient</h4>
+
+        <form action="/edit/<%-patient['_id']%>" method="post">
+
+                    <p>firstname: <input type="text" name="firstname" value="<%-patient['firstname']%>"></p>
+                    <p>lastname: <input type="text" name="lastname" value="<%-patient['lastname']%>"></p>
+                    <p>sex: Male <input type="radio" name="sex" value="Male"
+                        <% if(typeof sex !== 'undefined' && sex.checked('Male')){ %> checked <%}%>
+                        >
+                            Female <input type="radio" name="sex" value="Female"
+                        <% if(typeof sex !== 'undefined' && sex.checked('Female')){ %> checked <%}%>
+                        >
+                    </p>
+                    <p>Phone number: <input type="text" name="phone" value="<%-patient['phone']%>"></p>
+
+                    <p>maritalStatus:  Single <input type="radio" name="status" value="Single"
+                        <% if(typeof status !== 'undefined' && status.includes('Single')){ %> checked="checked" <%}%>
+                        />
+                                       Married <input type="radio" name="status" value="Married"
+                        <% if(typeof status !== 'undefined' && status.includes('Married')){ %> checked="checked" <%}%>
+                        />
+                                       Divorced <input type="radio" name="status" value="Divorced"
+                        <% if(typeof status !== 'undefined' && status.includes('Divorced')){ %> checked="checked" <%}%>
+                        />
+                                       Widowed <input type="radio" name="status" value="Widowed"
+                        <% if(typeof status !== 'undefined' && status.includes('Widowed')){ %> checked="checked" <%}%>
+                        />                 
+                    </p>
+            
+                <% let blood = ["A+", "B-", "O+", "B", "B+"] %>
+                <p>BloodGroup: <select name="bloodGroup">
+                                    <option value="<%-patient['bloodGroup']%>"><%-patient['bloodGroup']%></option>
+                                <% blood.forEach(function(group) { %>
+                                    <option value="<%-group%>"> <%-group%></option>
+                                    <%})%>
+                </select></p>
+
+                <% let geno = ["AA", "AS", "AC", "SS"] %>
+                <p>Genotype: <select name="genotype">
+                                    <option value="<%-patient['genotype']%>"><%-patient['genotype']%></option>
+                                <% geno.forEach(function(gen) { %>
+                                    <option value="<%-gen%>"> <%-gen%></option>
+                                    <%})%>
+
+                </select></p>
+
+                <input type="submit" value="click to submit">
+
+            </form>
+
+
+
+    </body>
+
+</html>

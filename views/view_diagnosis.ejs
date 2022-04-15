@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hospitaal Repo</title>
+    </head>
+    <body>
+
+        <p>User ID: <strong> <%- u_id %> </strong></p>
+        <p>Username: <strong> <%- uname %> </strong></p>
+
+        
+        <h1>Your Hospital Repo</h1>
+        <a href="/dashboard">Home</a>
+        <a href="/addpatient">Add Patient</a>
+        <a href="/viewpatient">View Patient</a>
+        <a href="/logout">Logout</a>
+
+
+
+        <h4>Diagnosis page</h4>
+        
+        <table border="1">
+            <tr align="center">
+                <th>Username</th>
+                <th>Complain</th>
+                <th>Recommendation</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr align="center">
+                <td> <%-diags['username']%> </td>
+                <td> <%-diags['complaint']%> </td>
+                <td> <%-diags['recommendation']%> </td>
+                <td> <a href="/editDiagnosis/<%-diags.patientid%>">Edit Diagnosis</a>  </td>
+                <td> <a href="/deleteDiagnosis/<%-diags._id%>">Delete Diagnosis</a> </td>
+
+            </tr>
+        </table>
+    </body>
+</html>
