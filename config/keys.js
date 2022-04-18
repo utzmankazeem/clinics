@@ -1,3 +1,3 @@
 module.exports = {
-    mongoURI: "mongodb://localhost:27017/hospitalRepo"
+    mongoURI: "mongodb+srv://utzmankazeem:kezman222@clinic.zhf13.mongodb.net/hospitalRepo"
 }

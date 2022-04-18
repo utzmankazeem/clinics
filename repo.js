@@ -4,7 +4,7 @@ const   express = require("express"),
         session = require("express-session"),
         app = express();
 
-const PORT = 2021;
+const port = process.env.PORT;
 const log = console.log;
 
         //DB CONFIG
@@ -39,4 +39,4 @@ app.use(express.static("public"));
         app.use('/', require('./routes/index'));
         app.use('/', require('./routes/users'));
 
-app.listen(PORT, () => log("server started on port 2021"))
+app.listen(port || 2021, () => log("server started on port 2021"))
