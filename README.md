@@ -16,6 +16,12 @@ An expert registers patient
 creates a record
 updates a record when needed
 
+# npm install
+run npm install to install all dependencies
+
+# npm start
+npm start to run app
+
 #Javascript
 #HTML
 #CSS
