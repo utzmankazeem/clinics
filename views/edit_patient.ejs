@@ -1,25 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>hospital repo</title>
-    </head>
-    <body>
-        <p>User ID: <strong> <%- u_id %> </strong></p>
-        <p>Username: <strong> <%- uname %> </strong></p>
-
-        <h1>Your Hospital Repo</h1>
-        <a href="/dashboard">Home</a>
-        <a href="/addpatient">Add Patient</a>
-        <a href="/viewpatient">View Patient</a>
-        <a href="/logout">Logout</a>
-
-        <h4>Edit Patient</h4>
+<% title = "Edit Patient" %>
+<%- include("layout/D-header")%>
 
         <form action="/edit/<%-patient['_id']%>" method="post">
 
                     <p>firstname: <input type="text" name="firstname" value="<%-patient['firstname']%>"></p>
                     <p>lastname: <input type="text" name="lastname" value="<%-patient['lastname']%>"></p>
-                    <p>sex: Male <input type="radio" name="sex" value="Male"
+                    <p>Gender: Male <input type="radio" name="sex" value="Male"
                         <% if(typeof sex !== 'undefined' && sex.checked('Male')){ %> checked <%}%>
                         >
                             Female <input type="radio" name="sex" value="Female"
@@ -62,9 +48,4 @@
                 <input type="submit" value="click to submit">
 
             </form>
-
-
-
-    </body>
-
-</html>
+<%- include("layout/footer")%>

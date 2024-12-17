@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%-title%></title>
+        <link rel="shortcut icon" href="../../fav.png" type="image/x-icon">
+    </head>
+    <body>
+
+            <h2>Kay's HMO Repository</h2>
+            <nav><ul>
+                <li><a href="/signup">register</a></li>
+                <li><a href="/login">login</a></li>
+            </ul></nav>
+            <% if(typeof errors != 'undefined') { %>
+                    <% errors.map((error)=>{ %>
+                        <h5 style="color: red"> <%- error.msg %> </h5>
+                    <% }) %>
+            <% } %>
+
+            <% if(message != 'undefined') { %>
+                <p style="color: green"> <%- message %> </h5>
+            <% } %>
+                
+            <% if(error_msg != 'undefined'){ %>
+                <p style="color: red"> <%- error_msg %> </p>
+            <% } %>
+<div class="d-flex main" id="wrapper">

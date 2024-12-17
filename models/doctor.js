@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const personnelSchema = {
         firstname: {
@@ -36,6 +36,11 @@ const personnelSchema = {
             required: true
         },
 
+        email: {
+            type: String,
+            required: true
+        },
+
         username: {
             type: String,
             required: true
@@ -54,4 +59,4 @@ const personnelSchema = {
 
 const Personnel = new mongoose.model("Personnel", personnelSchema);
 
-module.exports = Personnel;
+export default Personnel;

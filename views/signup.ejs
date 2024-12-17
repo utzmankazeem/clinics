@@ -1,33 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>hospital repo</title>
-    </head>
-    <body>
-
-            <h2>TCC Hospital Repo App</h2>
-            <ul>
-                <li><a href="/">welcome page</a></li>
-                <li><a href="/login">login page</a></li>
-            </ul>
-            <% if(typeof errors != 'undefined') { %>
-                    <% errors.forEach(function(error){ %>
-                        <h5 style="color: red"> <%- error.msg %> </h5>
-                    <% }) %>
-            <% } %>
-
-            <% if(message != 'undefined') { %>
-                <p style="color: green"> <%- message %> </h5>
-            <% } %>
-                
-            <% if(error_msg != 'undefined'){ %>
-                <p style="color: red"> <%= error_msg %> </p>
-            <% } %>
-
-
-            
-            <p>please fill in your hospital details below</p>
-            <h4>Signup </h4>
+<% title= "Signup" %>
+<%- include("layout/header") %>
             <form action="/signup" method="post">
                     <p>Firstname: <input type="text" name="firstname"
                         value="<%= typeof firstname != 'undefined' ? firstname : '' %>"></p>
@@ -40,6 +12,7 @@
                         <% if(typeof gender != 'undefined' && gender === 'Female'){ %> checked="checked" <%}%>
                         >
                     </p>
+                    
                     <p>Phone number: <input type="text" name="phoneNumber"
                         value="<%= typeof phoneNumber != 'undefined' ? phoneNumber : '' %>">
                     </p>
@@ -56,9 +29,9 @@
                 <% let speciality = ["General Medicine", "General Surgeon", "Neuro Surgeon",
                                     "physiotherapist", "Gynecologist", "Dentist", "Optamologist"] %>
 
-                <p>Specialization: <select name="specialization">
+                <p>Specialization🩺: <select name="specialization">
                             <option value="">Select qualification</option>
-                                <%speciality.forEach(function(special) { %>
+                                <%speciality.map((special) =>{ %>
                             <option value="<%-special%>""<% if(typeof specialization != 'undefined' ){%>" selected="selected" <%}%>> 
                                         <%-special%></option>
                                 <%})%>
@@ -66,6 +39,8 @@
 
                 <p>Hospital Name: <input type="text" name="hospitalName"
                     value="<%= typeof hospitalName != 'undefined' ? hospitalName : '' %>"hospitalName></p>
+                <p>Email: <input type="text" name="email"
+                    value="<%= typeof email != 'undefined' ? email : '' %>"></p>
                 <p>Preferred Username: <input type="text" name="username"
                     value="<%= typeof username != 'undefined' ? username : '' %>"></p>
                 <p>Password: <input type="text" name="pass1"
@@ -75,6 +50,5 @@
 
                 <input type="submit" value="click to submit">
             </form>
-           
-    </body>
-</html>
+    
+<%- include("layout/footer") %>

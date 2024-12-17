@@ -1,10 +1,10 @@
-# clinics
+# Virtual Clinics
 
 A medical Repository
 
-# An hospital repository application
+# An Health Management System
 
-The app allows health organizations, hospitals, clinics, front-line medicals,
+The app allows health organizations, hospitals, clinics, front-line medicals, 
 register with us.
 
 # Portal
@@ -19,6 +19,13 @@ A medical expert can see patient only based on his registrered list
 An expert registers patient
 creates a record
 updates a record when needed
+
+```ts
+    code to use : ES module
+    changes functions to : async/await
+    proper usage of: try/catch in async code block
+    using version : Node 18.2.0
+```
 
 # npm install
 

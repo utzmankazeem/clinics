@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>hospital repo</title>
-    </head>
-    <body>
-
-        <p>User ID: <strong> <%- u_id %> </strong></p>
-        <p>Username: <strong> <%- uname %> </strong></p>
-
-
-        <h1>Your Hospital Repo</h1>
-        <a href="/dashboard">Home</a>
-        <a href="/addpatient">Add Patient</a>
-        <a href="/viewpatient">View Patient</a>
-        <a href="/logout">Logout</a>
-
-        <h4>Patients page</h4>
+<% title = "View Patient" %>
+<%- include("layout/D-header")%>
 
         <table border="1">
             <tr>
@@ -31,7 +15,7 @@
                 <th>Delete</th>
             </tr>
             <tr>
-                <% patients.forEach(function(patient) { %>
+                <% patients.map((patient)=> { %>
                 <td> <%-patient.firstname +" - "+ patient.lastname%> </td>
                 <td> <%-patient.sex%> </td>
                 <td> <%-patient.phone%> </td>
@@ -46,5 +30,5 @@
             <% }) %> 
         </table>
 
-    </body>
-</html>
+ 
+<%- include("layout/footer")%>

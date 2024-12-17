@@ -1,47 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>hospital repo</title>
-    </head>
-    <body>
-
-        <p>User ID: <strong> <%- u_id %> </strong></p>
-        <p>Username: <strong> <%- uname %> </strong></p>
-
-        <h1>Your Hospital Repo</h1>
-        <a href="/dashboard">Home</a>
-        <a href="/addpatient">Add Patient</a>
-        <a href="/viewpatient">View Patient</a>
-        <a href="/logout">Logout</a>
-
-            
-            <% if(typeof errors != 'undefined') { %>
-            
-                <% errors.forEach(function(error){ %>
-                    <h5 style="color: red"> <%- error.msg %> </h5>
-
-                <% }) %>
-        
-            <% } %>
-            <% if(message != '') { %>
-                <p style="color: green"> <%- message %> </h5>
-            <% } %>
-                
-            <% if(error_msg != ''){ %>
-                <p style="color: red"> <%= error_msg %> </p>
-            <% } %>
-
-            
-            <p>please add patient details below</p>
-            <h4>Add Diagnosis</h4>
+<% title = "Add Diagnosis" %>
+<%- include("layout/D-header")%>
             <form action="/addDiagnosis" method="post">
 
                     <p>Patient ID: <input type="text" name="patient_id" value="<%- p_id %>"></p>
                     <p>Complaints: <br><textarea rows="10" cols="25" name="complaint"></textarea></p>
                     <p>Recommendation: <br><textarea rows="10" cols="25" name="recommendation"></textarea></p>
-
-                <input type="submit" value="click to submit">
+                    <input type="submit" value="click to submit">
             </form>
            
-    </body>
-</html>
+<%- include("layout/footer")%>

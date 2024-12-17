@@ -1,16 +1,18 @@
-const   express = require("express"),
-        flash = require("connect-flash"),
-        mongoose = require("mongoose"),
-        session = require("express-session"),
-        app = express();
+import express from "express"
+import flash from "connect-flash"
+import session from "express-session"
+import connectDB from "./config/keys.js"
+import index from "./routes/index.js"
+import users from "./routes/users.js"
+const  app = express();
 
-const port = process.env.PORT;
+const PORT = 2021
 const log = console.log;
 
-        //DB CONFIG
-        const db = require('./config/keys').mongoURI;
-        mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true});
+//DB CONFIG
+connectDB();
 
+//middlewares
 app.set("view engine", "ejs");
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -22,7 +24,6 @@ app.use(express.static("public"));
                 saveUninitialized: true,
                 resave: true
         }));
-
 
         // CONNECT FLASH
         app.use(flash());
@@ -36,7 +37,7 @@ app.use(express.static("public"));
         });
 
 ///////////////Targeting Users and Index routes///////////////////////
-        app.use('/', require('./routes/index'));
-        app.use('/', require('./routes/users'));
+        app.use('/', index);
+        app.use('/', users);
 
-app.listen(port || 2021, () => log("server started on port 2021"))
+app.listen(process.env.PORT|| PORT, () => log(`server started on http://localhost:${PORT}`))

@@ -1,27 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>hospital repo</title>
-    </head>
-    <body>
-
-        <p>User ID: <strong> <%- u_id %> </strong></p>
-        <p>Username: <strong> <%- uname %> </strong></p>
-
-        <h1>Your Hospital Repo</h1>
-        <a href="/dashboard">Home</a>
-        <a href="/addpatient">Add Patient</a>
-        <a href="/viewpatient">View Patient</a>
-        <a href="/logout">Logout</a>
-
-        <h4>Edit Diagnosis</h4>
+<% title = "Edit Diagnosis" %>
+<%- include("layout/D-header")%>
         <form action="/editDiagnosis/<%-diags['_id']%>" method="post"> 
         
+                <p>Patient ID: <input type="hidden" name="Username" value=" <%- u_id %>"> </p>
                 <p>Patient ID: <input type="text" name="patientid" value="<%-diags['patientid']%>"> </p>
                 <p>Complaint: <input type="text" name="complaint" value="<%-diags['complaint']%>"> </p>
                 <p>Recommendation: <input type="text" name="recommendation" value="<%-diags['recommendation']%>">  </p>
                 <p><input type="submit" value="submit"></p>
 
         </form>
-    </body>
-</html>
+<%- include("layout/footer")%>

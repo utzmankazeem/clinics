@@ -1,34 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>hospital repo</title>
-    </head>
-    <body>
-
-            <h2>TCC Hospital Repo App</h2>
-            <ul>
-                <li><a href="/">welcome page</a></li>
-                <li><a href="/signup">signup</a></li>
-            </ul>
-            <% if(message != 'undefined') { %>
-                <h5 style="color: green"> <%= message %> </h5>
-            <% } %>
-                
-            <% if(error_msg != 'undefined'){ %>
-                <p style="color: red"> <%= error_msg %> </p>
-            <% } %>
-            
-            <p>This app allow medical practitioners full practice electronically</p>
-            <h4>Login</h4>
-            <!-- <p>please enter your username and password</p> -->
-            <form action="/login" method="post">
-                    <p>Username: <input type="text" name="username" 
-                value=" <%- typeof username != 'undefined' ? username : '' %> ">
-                    </p>
-                    <p>Password: <input type="text" name="password" 
-                value=" <%- typeof password != 'undefined' ? password : '' %> ">
-                    </p>
-                    <input type="submit" value="Click to login">
-            </form>
-    </body>
-</html>
+<% title="SignIn" %>
+<%- include("layout/header")%>
+        <!-- <p>please enter your username and password</p> -->
+        <form action="/login" method="post">
+            <p>Username: <input type="text" name="username"
+                    value=" <%- typeof username != 'undefined' ? username : '' %> ">
+            </p>
+            <p>Password: <input type="text" name="password"
+                    value=" <%- typeof password != 'undefined' ? password : '' %> ">
+            </p>
+            <input type="submit" value="Click to login">
+        </form>
+<%- include("layout/footer")%>

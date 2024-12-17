@@ -1,35 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>hospital repo</title>
-    </head>
-    <body>
-        <p>User ID: <strong> <%- u_id %> </strong></p>
-        <p>Username: <strong> <%- uname %> </strong></p>
-
-        <h1>Your Hospital Repo</h1>
-        <a href="/dashboard">Home</a>
-        <a href="/addpatient">Add Patient</a>
-        <a href="/viewpatient">View Patient</a>
-        <a href="/logout">Logout</a>
-
-            <% if(typeof errors != 'undefined') { %>  
-                <% errors.forEach(function(error){ %>
-                    <h5 style="color: red"> <%= error.msg %> </h5>
-                <% }) %>
-            <% } %>
-
-            <% if(message != '') { %>
-                <p style="color: green"> <%= message %> </p>
-            <% } %>
-                
-            <% if(error_msg != ''){ %>
-                <p style="color: red"> <%= error_msg %> </p>
-            <% } %>
-
-            
-            <p>please add patient details below</p>
-            <h4>Patients page</h4>
+<% title = "Add Patient" %>
+<%- include("layout/D-header")%>
             <form action="/addpatient" method="post">
                     <p>firstname: <input type="text" name="firstname"value="<%= typeof firstname != 'undefined' ? firstname : '' %>"></p>
                     <p>lastname: <input type="text" name="lastname"value="<%= typeof firstname != 'undefined' ? lastname : '' %>"></p>
@@ -76,5 +46,4 @@
                 <input type="submit" value="click to submit">
             </form>
            
-    </body>
-</html>
+<%- include("layout/footer")%>
