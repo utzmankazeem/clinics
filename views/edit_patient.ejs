@@ -1,6 +1,7 @@
 <% title = "Edit Patient" %>
-<%- include("layout/D-header")%>
-
+<%- include("layout/headerID")%>
+    <section>
+        <main>
         <form action="/edit/<%-patient['_id']%>" method="post">
 
                     <p>firstname: <input type="text" name="firstname" value="<%-patient['firstname']%>"></p>
@@ -45,7 +46,8 @@
 
                 </select></p>
 
-                <input type="submit" value="click to submit">
-
-            </form>
+                <button type="submit"> submit </button>
+        </form>
+        </main>
+    </section>
 <%- include("layout/footer")%>

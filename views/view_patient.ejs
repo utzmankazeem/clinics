@@ -1,16 +1,16 @@
 <% title = "View Patient" %>
 <%- include("layout/D-header")%>
-
+    <section>
+        <main>
         <table border="1">
             <tr>
                 <th>Name</th>
-                <th>Gender</th>
+                <th>Sex</th>
                 <th>Mobile</th>
                 <th>Status</th>
-                <th>BloodGroup</th>
+                <th>B.Group</th>
                 <th>Genotype</th>
-                <th>Add Diagnosis</th>
-                <th>View Diagnosis</th>
+                <th colspan="2">Diagnosis </th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -22,13 +22,14 @@
                 <td> <%-patient.status%> </td>
                 <td> <%-patient.bloodGroup%> </td>
                 <td> <%-patient.genotype%> </td>
-                <td> <a href="/addDiagnosis/<%-patient._id%>">Add Diagnosis</a></td>
-                <td> <a href="/viewDiagnosis/<%-patient._id%>">View Diagnosis</a></td>
-                <td> <a href="/edit/<%-patient._id%>">Edit</a>  </td>
-                <td> <a href="/delete/<%-patient._id%>">Delete</a> </td>
+                <td> <a type="button" href="/addDiagnosis/<%-patient._id%>">➕</a></td>
+                <td> <a type="button" href="/viewDiagnosis/<%-patient._id%>">✅</a></td>
+                <td> <a type="button" href="/edit/<%-patient._id%>">📝</a> </td>
+                <td> <a type="button" href="/delete/<%-patient._id%>">🗑️</a></td>
             </tr>
             <% }) %> 
         </table>
-
+        </main>
+    </section>
  
 <%- include("layout/footer")%>

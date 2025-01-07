@@ -1,17 +1,19 @@
 <% title = "Add Patient" %>
 <%- include("layout/D-header")%>
+<section>
+    <main>
             <form action="/addpatient" method="post">
-                    <p>firstname: <input type="text" name="firstname"value="<%= typeof firstname != 'undefined' ? firstname : '' %>"></p>
-                    <p>lastname: <input type="text" name="lastname"value="<%= typeof firstname != 'undefined' ? lastname : '' %>"></p>
-                    <p>sex: Male <input type="radio" name="sex" value="Male"
-                        <% if(typeof sex != 'undefined' && sex == 'Male'){ %> checked="checked" <%}%>>
-                                Female <input type="radio" name="sex" value="Female"
-                        <% if(typeof sex != 'undefined' && sex == 'Female'){ %> checked="checked" <%}%>>
+                    <p>Firstname: <input type="text" name="firstname"value="<%= typeof firstname != 'undefined' ? firstname : '' %>"></p>
+                    <p>Lastname: <input type="text" name="lastname"value="<%= typeof firstname != 'undefined' ? lastname : '' %>"></p>
+                    <p>Gender: Male <input type="radio" name="sex" value="M"
+                        <% if(typeof sex != 'undefined' && sex == 'M'){ %> checked="checked" <%}%>>
+                                Female <input type="radio" name="sex" value="F"
+                        <% if(typeof sex != 'undefined' && sex == 'F'){ %> checked="checked" <%}%>>
                     </p>
                     <p>Phone number: <input type="text" name="phone"
                         value="<%= typeof phone != 'undefined' ? phone : '' %>">
                     </p>
-                    <p>maritalStatus:  Single <input type="radio" name="status" value="Single" 
+                    <p>Status:  Single <input type="radio" name="status" value="Single" 
                         <% if(typeof status != 'undefined' && status === 'Single'){ %> checked="checked" <%}%>
                         />
                                        Married <input type="radio" name="status" value="Married"
@@ -43,7 +45,8 @@
                                     <%})%>
                 </select>
                 </p>
-                <input type="submit" value="click to submit">
+                <button type="submit" value="Add">Add</button>
             </form>
-           
+    </main>
+</section>           
 <%- include("layout/footer")%>

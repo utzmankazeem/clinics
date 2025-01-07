@@ -1,12 +1,15 @@
 <% title = "Edit Diagnosis" %>
-<%- include("layout/D-header")%>
+<%- include("layout/headerID")%>
+<section>
+        <main>
         <form action="/editDiagnosis/<%-diags['_id']%>" method="post"> 
         
                 <p>Patient ID: <input type="hidden" name="Username" value=" <%- u_id %>"> </p>
                 <p>Patient ID: <input type="text" name="patientid" value="<%-diags['patientid']%>"> </p>
                 <p>Complaint: <input type="text" name="complaint" value="<%-diags['complaint']%>"> </p>
                 <p>Recommendation: <input type="text" name="recommendation" value="<%-diags['recommendation']%>">  </p>
-                <p><input type="submit" value="submit"></p>
-
+                <button type="submit">submit</button>
         </form>
+        </main>
+</section>
 <%- include("layout/footer")%>

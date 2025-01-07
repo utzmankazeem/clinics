@@ -89,7 +89,7 @@ export const getPatientById = async (req, res) => {
         }) 
         
     } catch (error) {
-        req.flash('error_msg', "no patient with this id");
+        req.flash('error_msg', "server error");
         return res.redirect("/viewpatient");
     }
 }
@@ -138,19 +138,19 @@ export const deletePatient = async (req, res) => {
 export const getPatientDiagnosis = async (req, res) => {
     const p_id = req.params.patientID
     if (!req.session.user_id) {
-        res.redirect('/login');
+        return res.redirect('/login');
     } 
     try {
         const diag = await Diagnosis.findOne({patientid: p_id})
         if(diag){
             req.flash('message', "patient already diagnosed");
             return res.redirect('/viewDiagnosis/:patientID')
-        } else {
+        } 
         return res.render('add_diagnosis', {
             u_id: req.session.user_id,
             uname: req.session.username,
             p_id: p_id
-        })};
+        });
     } catch (error) {
         console.log(error)
         req.flash('error_msg', "patient has no diag");
@@ -172,16 +172,10 @@ export const postPatientDiagnosis = async (req, res) => {
         res.render('add_diagnosis', { errors, u_id: req.session.user_id, uname: req.session.username, patient_id, complaint, recommendation });
     }
     try {
-        const diag = await Diagnosis.findOne({patientid: req.params.patientID})
-        if(diag){
-            req.flash('message', "cant add new diagnosis, check records to add update");
-            return res.redirect('/viewDiagnosis/:patientID')
-        }
-        if(!diag)
         await Diagnosis.create({
             patientid: patient_id,
             username: req.session.username,
-            complaint,
+            complaint,  
             recommendation
         })
         req.flash("message", "Diagnosis Added");
@@ -221,7 +215,7 @@ export const getEditDiagnosis = async (req, res) => {
 
     if (!req.session.user_id) {
         req.flash("error_msg", "please login");
-        res.redirect("/login")
+        return res.redirect("/login")
     }
     try {
         const editdiag = await Diagnosis.findOne({ patientid:diag })
@@ -254,7 +248,7 @@ export const postEditDiagnosis = async (req, res) => {
             return res.redirect("/viewpatient");
         }
         req.flash('message', " diagnosis updated");
-        return res.redirect("/viewpatient");
+        return res.redirect("/viewDiagnosis/:patientID");
     } catch (error) {
         console.log(error)
         req.flash('error_msg', "server error");

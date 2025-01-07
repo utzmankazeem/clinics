@@ -1,5 +1,7 @@
 <% title = "Patient Diagnosis" %>
-<%- include("layout/D-header")%> 
+<%- include("layout/headerID")%> 
+    <section>
+        <main>
         <table border="1">
             <tr align="center">
                 <th>Dr.</th>
@@ -12,9 +14,11 @@
                 <td> <%-diags['username']%> </td>
                 <td> <%-diags['complaint']%> </td>
                 <td> <%-diags['recommendation']%> </td>
-                <td> <a href="/editDiagnosis/<%-diags.patientid%>">editDiag</a>  </td>
-                <td> <a href="/deleteDiagnosis/<%-diags._id%>">delDiag</a> </td>
+                <td> <a type="button" href="/editDiagnosis/<%-diags.patientid%>">📝</a></td>
+                <td> <a type="button" href="/deleteDiagnosis/<%-diags._id%>">🗑️</a> </td>
 
             </tr>
         </table>
+        </main>
+    </section>
 <%- include("layout/footer")%>

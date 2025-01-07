@@ -1,11 +1,14 @@
 <% title = "Add Diagnosis" %>
-<%- include("layout/D-header")%>
+<%- include("layout/headerID")%>
+        <section>
+                <main>
             <form action="/addDiagnosis" method="post">
 
                     <p>Patient ID: <input type="text" name="patient_id" value="<%- p_id %>"></p>
                     <p>Complaints: <br><textarea rows="10" cols="25" name="complaint"></textarea></p>
                     <p>Recommendation: <br><textarea rows="10" cols="25" name="recommendation"></textarea></p>
-                    <input type="submit" value="click to submit">
+                    <button type="submit"> Add </button>
             </form>
-           
+                </main>
+        </section>   
 <%- include("layout/footer")%>

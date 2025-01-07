@@ -1,13 +1,35 @@
 <% title="SignIn" %>
 <%- include("layout/header")%>
+        <section>
+                <main>
         <!-- <p>please enter your username and password</p> -->
-        <form action="/login" method="post">
-            <p>Username: <input type="text" name="username"
-                    value=" <%- typeof username != 'undefined' ? username : '' %> ">
-            </p>
-            <p>Password: <input type="text" name="password"
-                    value=" <%- typeof password != 'undefined' ? password : '' %> ">
-            </p>
-            <input type="submit" value="Click to login">
-        </form>
+                <form action="/login" method="post">
+                        <p>
+                                <% if(typeof errors != 'undefined') { %>
+                                    <% errors.map((error)=>{ %>
+                                        <p style="color: red"> <%- error.msg %> </p>
+                                    <% }) %>
+                                <% } %>
+                    
+                                <% if(message != 'undefined') { %>
+                                    <p style="color: green"> <%- message %> </p>
+                                <% } %>
+                                    
+                                <% if(error_msg != 'undefined'){ %>
+                                    <p style="color: red"> <%- error_msg %> </p>
+                                <% } %>
+                        </p>
+
+                        <p>Username: <input type="text" name="username"
+                                value=" <%- typeof username != 'undefined' ? username : '' %> ">
+                        </p>
+                        <p>Password: <input type="text" name="password"
+                                value=" <%- typeof password != 'undefined' ? password : '' %> ">
+                        </p>
+                
+                        <button type="submit" value="login"> login </button>
+                        <button type="reset" value="cancel"> cancel </button>
+                </form>
+        </main>
+        </section>
 <%- include("layout/footer")%>

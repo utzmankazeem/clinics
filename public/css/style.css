@@ -1,0 +1,212 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body {
+    font-family: monospace;
+    font-size: 12px;
+}
+header, footer {
+    position: fixed;
+    display: flex;
+    left: 5vw;
+    background-color:indigo;
+    align-items: center;
+    width: 90vw;
+    height: 10vh;
+    color:  white;
+}
+header {
+    top: 0px;
+    justify-content: center;
+
+    .logo {
+        color: black;
+        cursor: pointer;
+    }
+    
+    nav { 
+    
+        ul {
+            list-style-type: none;   
+        }
+        & a, li, button {
+            display: inline-block;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+        } 
+        & ul li {
+            display: inline-block;
+            padding: 0px 20px;
+        }
+        & ul li a {
+            transition: font-size 1s linear ;
+            font-size: 20px;
+        }
+        & ul li a:hover  {
+            cursor: pointer;
+            padding: 3px;
+            background-color: white;
+            color: indigo;
+            border: 1px solid black;
+        }
+        button {
+            padding: 9px 25px;
+            background-color:darkred;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+        }       
+    }
+}
+
+section {
+    display: flex;
+    position: relative;
+    top: 12.5vh;
+    height: 75vh;
+    width: 85vw;
+    margin: auto;
+    background-color: gainsboro;
+} 
+
+main {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    margin: auto;
+    text-align: center;
+    
+    .def {
+                position: relative;
+                justify-content: center;
+                font-family: geneva;
+                font-size: 14px;
+                text-align:justify;
+            margin: 10px;
+    }
+    #user {
+        position: relative;
+        top: -75px;
+        left:0px;
+        margin: 10px;
+    }
+
+    .avatar {
+        background-image: url('../img/avatar.png');
+        background-position: center;
+        background-size: contain;
+    }
+    #quote {
+        position: absolute;
+        right: 10px;
+        bottom: -30px;
+        color: rgb(109, 16, 155);
+    }
+    
+    form {
+    
+        & p {
+            position: relative;
+            text-align: left;
+        }
+        
+        & input {
+            position: relative;
+        }
+        & input, select {
+            margin-bottom: 5px;
+        }
+       
+    }
+
+    & table {
+        display: flex;
+        position: relative;
+        width: inherit;
+        flex-wrap: wrap;
+
+        tr {
+            padding: 3px;
+            border: 2px solid white;       
+        }
+        & button:hover{
+            padding: 5px;
+            background-color: none;
+            text-transform: uppercase;
+        }
+        & button {
+            display: inline-block;
+            height: 30px;
+            width: 60px;
+            border: none;
+        }
+         a {
+            transition: font-size 1s linear ;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+        a:hover  {
+            cursor: pointer;
+            background-color: white;
+            color: indigo;
+            border: 1px solid black;
+        }
+    }
+        
+    & article {
+        margin: 10px;
+        height: 30vh;
+        border: 1px solid rgb(191, 99, 199);
+    }
+    & button {
+        display: inline-block;
+        background-color: rgb(99, 31, 148);
+        height: 30px;
+        width: 60px;
+        color: white;
+    }
+    & button:hover{
+        color: rgb(99, 31, 148);
+        background-color: white;
+        cursor: pointer;
+    }
+}
+
+footer {
+    bottom: 0px; 
+    justify-content:center;
+}
+
+@media (max-width: 700px) {
+    table {
+        font-size: 10px;
+        box-sizing: border-box;
+        width: min-content;
+        
+        & a {
+            text-decoration: none;
+        }
+        & a:hover  {
+            cursor: pointer;
+        }
+        & button {
+            display: inline-block;
+            height: 5px;
+            width: 10px;
+            border: none;
+            background-color: #fff;         
+        }
+        & button:hover{
+            background-color: rgb(99, 31, 148);
+            cursor: pointer;
+        }
+
+    }
+}
+
+
