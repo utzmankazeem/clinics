@@ -1,52 +1,56 @@
-<% title = "Add Patient" %>
+<% title="Add Patient" %>
 <%- include("layout/D-header")%>
 <section>
     <main>
-            <form action="/addpatient" method="post">
-                    <p>Firstname: <input type="text" name="firstname"value="<%= typeof firstname != 'undefined' ? firstname : '' %>"></p>
-                    <p>Lastname: <input type="text" name="lastname"value="<%= typeof firstname != 'undefined' ? lastname : '' %>"></p>
-                    <p>Gender: Male <input type="radio" name="sex" value="M"
-                        <% if(typeof sex != 'undefined' && sex == 'M'){ %> checked="checked" <%}%>>
-                                Female <input type="radio" name="sex" value="F"
-                        <% if(typeof sex != 'undefined' && sex == 'F'){ %> checked="checked" <%}%>>
-                    </p>
-                    <p>Phone number: <input type="text" name="phone"
-                        value="<%= typeof phone != 'undefined' ? phone : '' %>">
-                    </p>
-                    <p>Status:  Single <input type="radio" name="status" value="Single" 
-                        <% if(typeof status != 'undefined' && status === 'Single'){ %> checked="checked" <%}%>
-                        />
-                                       Married <input type="radio" name="status" value="Married"
-                        <% if(typeof status != 'undefined' && status === 'Married'){ %> checked="checked" <%}%>
-                        />
-                                       Divorced <input type="radio" name="status" value="Divorced"
-                        <% if(typeof status != 'undefined' && status === 'Divorced'){ %> checked="checked" <%}%>
-                        />
-                                       Widowed <input type="radio" name="status" value="Widowed"
-                        <% if(typeof status != 'undefined' && status === 'Widowed'){ %> checked="checked" <%}%>
-                        />                 
-                    </p>
-            
-                <% let blood = ["A+", "B-", "O+", "B", "B+"] %>
+        <form action="/addpatient" method="post">
+            <p>Firstname: <input type="text" name="firstname"
+                    value="<%= typeof firstname != 'undefined' ? firstname : '' %>"></p>
+            <p>Lastname: <input type="text" name="lastname"
+                    value="<%= typeof firstname != 'undefined' ? lastname : '' %>"></p>
+            <p>Gender: Male <input type="radio" name="sex" value="M" <% if(typeof sex !='undefined' && sex=='M'
+                    ){ %> checked="checked" <%}%>>
+                    Female <input type="radio" name="sex" value="F" <% if(typeof sex !='undefined' && sex=='F'
+                        ){ %> checked="checked" <%}%>>
+            </p>
+            <p>Phone number: <input type="text" name="phone"
+                    value="<%= typeof phone != 'undefined' ? phone : '' %>">
+            </p>
+            <p>Status: Single <input type="radio" name="status" value="Single" <% if(typeof status !='undefined'
+                    && status==='Single' ){ %> checked="checked" <%}%>
+                    />
+                Married <input type="radio" name="status" value="Married" <% if(typeof status !='undefined'
+                    && status==='Married' ){ %> checked="checked" <%}%>
+                    />
+                Divorced <input type="radio" name="status" value="Divorced" <% if(typeof status
+                    !='undefined' && status==='Divorced' ){ %> checked="checked" <%}%>
+                    />
+                Widowed <input type="radio" name="status" value="Widowed" <% if(typeof status
+                    !='undefined' && status==='Widowed' ){ %> checked="checked" <%}%>
+                    />
+            </p>
+
+            <% let blood=["A+", "B-" , "O+" , "B" , "B+" ] %>
 
                 <p>BloodGroup: <select name="bloodGroup">
-                                    <option value=" ">Blood Group</option>
-                                <% blood.forEach(function(group) { %>
-                <option value="<%-group%>" <% if(typeof bloodGroup != 'undefined' ){%> selected="selected" <%}%>> <%-group%></option>
-                                    <%})%>
-                </select></p>
-
-                <% let geno = ["AA", "AS", "AC", "SS"] %>
-
-                <p>Genotype: <select name="genotype">
-                                    <option value=" ">Genotype</option>
-                                <% geno.forEach(function(gen) { %>
-                <option value="<%-gen%>" <% if(typeof genotype != 'undefined' ){%> selected="selected" <%}%>> <%-gen%></option>
-                                    <%})%>
+                        <option value=" ">Blood Group</option>
+                        <% blood.forEach(function(group) { %>
+                            <option value="<%-group%>" <% if(typeof bloodGroup !='undefined' ){%>
+                                selected="selected" <%}%>> <%-group%></option>
+                        <%})%>
                 </select>
                 </p>
+                <% let geno=["AA", "AS" , "AC" , "SS" ] %>
+
+                <p>Genotype: <select name="genotype">
+                        <option value=" ">Genotype</option>
+                        <% geno.forEach(function(gen) { %>
+                            <option value="<%-gen%>" <% if(typeof genotype !='undefined' ){%>
+                                selected="selected" <%}%>> <%-gen%></option>
+                        <%})%>
+                    </select>
+                </p>
                 <button type="submit" value="Add">Add</button>
-            </form>
+        </form>
     </main>
-</section>           
+</section>
 <%- include("layout/footer")%>

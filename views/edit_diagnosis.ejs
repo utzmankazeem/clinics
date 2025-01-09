@@ -4,11 +4,11 @@
         <main>
         <form action="/editDiagnosis/<%-diags['_id']%>" method="post"> 
         
-                <p>Patient ID: <input type="hidden" name="Username" value=" <%- u_id %>"> </p>
+                <input type="hidden" name="Username" value=" <%- u_id %>">
                 <p>Patient ID: <input type="text" name="patientid" value="<%-diags['patientid']%>"> </p>
-                <p>Complaint: <input type="text" name="complaint" value="<%-diags['complaint']%>"> </p>
-                <p>Recommendation: <input type="text" name="recommendation" value="<%-diags['recommendation']%>">  </p>
-                <button type="submit">submit</button>
+                <p>Complaint: <br><textarea name="complaint" rows="10" cols="30"><%-diags['complaint']%> </textarea> </p>
+                <p>Recommendation: <br> <textarea rows="10" cols="30"name="recommendation"> <%-diags['recommendation']%> </textarea> </p>
+                <button type="submit">Update</button>
         </form>
         </main>
 </section>

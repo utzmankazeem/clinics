@@ -4,9 +4,10 @@
                 <main>
             <form action="/addDiagnosis" method="post">
 
+                    <input type="hidden" name="patient_id" value="<%- p_id %>">
                     <p>Patient ID: <input type="text" name="patient_id" value="<%- p_id %>"></p>
-                    <p>Complaints: <br><textarea rows="10" cols="25" name="complaint"></textarea></p>
-                    <p>Recommendation: <br><textarea rows="10" cols="25" name="recommendation"></textarea></p>
+                    <p>Complaints: <br><textarea rows="10" cols="30" name="complaint"></textarea></p>
+                    <p>Recommendation: <br><textarea rows="10" cols="30" name="recommendation"></textarea></p>
                     <button type="submit"> Add </button>
             </form>
                 </main>

@@ -11,8 +11,7 @@
                 <th>B.Group</th>
                 <th>Genotype</th>
                 <th colspan="2">Diagnosis </th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th colspan="2">Edit Patient</th>
             </tr>
             <tr>
                 <% patients.map((patient)=> { %>
@@ -23,7 +22,7 @@
                 <td> <%-patient.bloodGroup%> </td>
                 <td> <%-patient.genotype%> </td>
                 <td> <a type="button" href="/addDiagnosis/<%-patient._id%>">➕</a></td>
-                <td> <a type="button" href="/viewDiagnosis/<%-patient._id%>">✅</a></td>
+                <td> <a type="button" href="/viewDiagnosis/<%-patient._id%>">📖</a></td>
                 <td> <a type="button" href="/edit/<%-patient._id%>">📝</a> </td>
                 <td> <a type="button" href="/delete/<%-patient._id%>">🗑️</a></td>
             </tr>
