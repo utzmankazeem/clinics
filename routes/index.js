@@ -3,9 +3,6 @@ const router = express.Router();
 import {dashboard, deleteDiagnosis, deletePatient, postEditPatient, getAddPatient, getEditDiagnosis, getPatientById, getPatientDiagnosis, postAddPatient, postEditDiagnosis, postPatientDiagnosis, viewDiagnosisById, viewPatient} 
 from '../controller/indexController.js'
 
-
-
-
 router.get('/dashboard', dashboard)
 router.get('/addpatient', getAddPatient)
 router.post('/addpatient', postAddPatient)
