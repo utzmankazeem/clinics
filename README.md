@@ -62,7 +62,7 @@ Create a .env file in the root directory.
 
 Add the following keys:
 
-PORT=5000
+PORT=2021
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 STRIPE_SECRET_KEY=your_stripe_secret_key
@@ -102,6 +102,8 @@ GET /api/claims: Retrieve all claims.
 
 POST /api/claims: Submit a new claim.
 
+Payment Integration: Stripe/Paystack
+
 
 # Technology Stack
 Frontend: Html5, RWD, CSS3
@@ -111,8 +113,6 @@ Backend: Node.js, Express.js
 Database: MongoDB
 
 Authentication: JSON Web Tokens (JWT)
-
-Payment Integration: Stripe/Paystack
 
 Deployment: AWS 
 
