@@ -2,7 +2,7 @@
 <%- include("layout/header") %>
 <section>
     <main>
-        <form action="/signup" method="post">
+        <form action="/users/signup"   method="post">
             <p>
                 <% if(typeof errors != 'undefined') { %>
                     <% errors.map((error)=>{ %>

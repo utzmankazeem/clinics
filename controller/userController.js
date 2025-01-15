@@ -30,7 +30,7 @@ export const postSignup = async (req, res) => {
             const duplicate = await Doctor.findOne({username})            
                 if(duplicate) {
                     req.flash('error_msg', 'username already exists');
-                    return res.redirect('/signup');
+                    return res.redirect('/users/signup');
                 } 
                 //Encrypt Password
                 const hash = await bcrypt.hash(pass1, 10)
@@ -48,10 +48,10 @@ export const postSignup = async (req, res) => {
                             password: hash
                         })// Success message and redirect
                         req.flash("message", "you are now registered");
-                        return res.redirect('/login');    
+                        return res.redirect('/users/login')
         } catch (error) {
             req.flash('error_msg', 'please retry');
-            return res.redirect('/signup');
+            return res.redirect('/users/signup');
         }         
 }
 export const getLogin = async (req, res) => {
@@ -62,19 +62,19 @@ export const postLogin = async (req, res) => {
     
     if(!username || !password){
         req.flash('error_msg',"enter username & password");
-        return res.redirect('/login');
+        return res.redirect('/users/login')
     }
     try {
             const person = await Doctor.findOne({username})
             if(!person){
                 req.flash('error_msg',"user not found");
-                return res.redirect('/login');
+                return res.redirect('/users/login');
             }
             //compare hashed Password
             const isVerify = bcrypt.compare(password, person.password)
                 if(!isVerify) {
                     req.flash('error_msg', "Incorrect password");
-                    return res.redirect('/login')
+                    return res.redirect('/users/login')
                 }
                 //if password match set session
                     req.session.user_id = person._id;
@@ -84,7 +84,7 @@ export const postLogin = async (req, res) => {
                     return res.redirect('/dashboard');
         } catch (error) {
             req.flash('error_msg', "Incorrect password");
-            return res.redirect('/login')
+            return res.redirect('/users/login');
         }
 }
 export const logout = async (req,res) =>{

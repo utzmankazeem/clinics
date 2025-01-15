@@ -6,11 +6,11 @@
 
                     <p>firstname: <input type="text" name="firstname" value="<%-patient['firstname']%>"></p>
                     <p>lastname: <input type="text" name="lastname" value="<%-patient['lastname']%>"></p>
-                    <p>Gender: Male <input type="radio" name="sex" value="Male"
-                        <% if(typeof sex !== 'undefined' && sex.checked('Male')){ %> checked <%}%>
+                    <p>Gender: Male <input type="radio" name="sex" value="M"
+                        <% if(typeof sex !== 'undefined' && sex.checked('M')){ %> checked <%}%>
                         >
-                            Female <input type="radio" name="sex" value="Female"
-                        <% if(typeof sex !== 'undefined' && sex.checked('Female')){ %> checked <%}%>
+                            Female <input type="radio" name="sex" value="F"
+                        <% if(typeof sex !== 'undefined' && sex.checked('F')){ %> checked <%}%>
                         >
                     </p>
                     <p>Phone number: <input type="text" name="phone" value="<%-patient['phone']%>"></p>

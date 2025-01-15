@@ -4,7 +4,7 @@ import Diagnosis from '../models/diagnosis.js'
 export const dashboard = async (req, res) => {
     if (!req.session.user_id) {
         req.flash('error_msg', "Please login to access app");
-        return res.redirect('/login');
+        return res.redirect('/users/login');
     } else {
         return res.render('dashboard', { u_id: req.session.user_id, uname: req.session.username });
     }
@@ -13,7 +13,7 @@ export const dashboard = async (req, res) => {
 export const getAddPatient = async (req, res) => {
     if (!req.session.user_id) {
         req.flash("error_msg", 'please login to access app');
-        return res.redirect('/login');
+        return res.redirect('/users/login');
     } else {
         return res.render('add_patient', { u_id: req.session.user_id, uname: req.session.username })
     }
@@ -21,7 +21,7 @@ export const getAddPatient = async (req, res) => {
 
 export const postAddPatient = async (req, res) => {
     if (!req.session.user_id) {
-        return res.redirect('/login');
+        return res.redirect('/users/login');
     }
     const { firstname, lastname, sex, phone, status, bloodGroup, genotype } = req.body;
     let errors = []; //WE CREATE AN EMPTY ARRAY
@@ -54,7 +54,7 @@ export const postAddPatient = async (req, res) => {
 export const viewPatient = async (req, res) => {
     if (!req.session.user_id) {
         req.flash("error_msg", "please login");
-        return res.redirect("/login")
+        return res.redirect('/users/login');
     }
     try {
         const patients = await Patient.find({username: req.session.username})
@@ -74,7 +74,7 @@ export const getPatientById = async (req, res) => {
 
     if (!req.session.user_id) {
         req.flash("error_msg", "please login");
-        return res.redirect("/login")
+        return res.redirect('/users/login');
     }
     try {
         const ed = await Patient.findById({ _id })
@@ -99,7 +99,7 @@ export const postEditPatient = async (req, res) => {
 
     if (!req.session.user_id) {
         req.flash("error_msg", "please login");
-        return res.redirect("/login")
+        return res.redirect('/users/login');
     }
     try {
         const patient = await Patient.updateOne({ _id: edit }, {$set: req.body})
@@ -122,7 +122,7 @@ export const deletePatient = async (req, res) => {
 
     if (!req.session.user_id) {
         req.flash("error_msg", "please login");
-        return res.redirect("/login")
+        return res.redirect('/users/login');
     }
     try {
         await Patient.findByIdAndRemove({ _id:del })
@@ -138,7 +138,7 @@ export const deletePatient = async (req, res) => {
 export const getPatientDiagnosis = async (req, res) => {
     const p_id = req.params.patientID
     if (!req.session.user_id) {
-        return res.redirect('/login');
+        return res.redirect('/users/login');
     } 
     try {
         const diag = await Diagnosis.findOne({patientid: p_id})
@@ -160,7 +160,7 @@ export const getPatientDiagnosis = async (req, res) => {
 
 export const postPatientDiagnosis = async (req, res) => {
     if (!req.session.user_id) {
-        res.redirect('/login');
+        res.redirect('/users/login');
     }
     const { patient_id, complaint, recommendation } = req.body;
     let errors = []; //WE CREATE AN EMPTY ARRAY
@@ -181,6 +181,7 @@ export const postPatientDiagnosis = async (req, res) => {
         req.flash("message", "Diagnosis Added");
         return res.redirect('/viewDiagnosis/:patientID')
     } catch (error) {
+        console.log(error)
         req.flash('error_msg', "there was a problem adding diagnosis");
         return res.redirect("/viewpatient");
     }
@@ -190,7 +191,7 @@ export const viewDiagnosisById = async (req, res) => {
     const pat = req.params.patientID;
     if (!req.session.user_id) {
         req.flash("error_msg", "please login");
-        res.redirect("/login")
+        return direct('/users/login');
     }
     try {
         const diag = await Diagnosis.findOne({ patientid:pat })
@@ -215,7 +216,7 @@ export const getEditDiagnosis = async (req, res) => {
 
     if (!req.session.user_id) {
         req.flash("error_msg", "please login");
-        return res.redirect("/login")
+        return res.redirect('/users/login');
     }
     try {
         const editdiag = await Diagnosis.findOne({ patientid:diag })
@@ -239,7 +240,7 @@ export const postEditDiagnosis = async (req, res) => {
 
     if (!req.session.user_id) {
         req.flash("error_msg", "please login");
-        return res.redirect("/login")
+        return res.redirect('/users/login');
     }
     try {
         const editdiag = await Diagnosis.updateOne({_id: diag },{$set: req.body})
@@ -260,7 +261,7 @@ export const deleteDiagnosis = async (req, res) => {
     const del = req.params.patientID;
     if (!req.session.user_id) {
         req.flash("error_msg", "please login");
-        return res.redirect("/login")
+        return res.redirect('/users/login');
     }
     try {
         // const diag = await Diagnosis.findByIdAndRemove({_id: del})
