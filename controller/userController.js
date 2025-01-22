@@ -88,6 +88,9 @@ export const postLogin = async (req, res) => {
         }
 }
 export const logout = async (req,res) =>{
-    req.session.destroy()
+     // Clear session data
+     req.session = null; 
+     // Explicitly delete the cookie
+     res.clearCookie('session'); 
     await res.redirect('/');
 }
